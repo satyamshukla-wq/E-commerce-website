@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+    </header>
+    <main>
+        <p>Your cart is currently empty.</p>
+        <!-- Add your cart items here -->
+        <button><a href="index.html">Continue Shopping</a></button> <!-- Button to go back to main page -->
+    </main>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <a href="index.html">Continue Shopping</a>
+    </header>
+    <main>
+        <div id="cart-items"></div>
+        <p id="total-price"></p>
+    </main>
+    <script>
+        // Retrieve cart items from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        let totalPrice = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is currently empty.</p>';
+        } else {
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.textContent = `${item.name} - Rs.${item.price}`;
+                cartItemsContainer.appendChild(itemElement);
+                totalPrice += parseFloat(item.price);
+            });
+            document.getElementById('total-price').textContent = `Total Price: Rs.${totalPrice.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

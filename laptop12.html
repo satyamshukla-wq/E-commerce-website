@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .product-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .product:last-child {
+            border-bottom: none;
+        }
+        .product img {
+            width: 150px;
+            height: auto;
+            border-radius: 4px;
+        }
+        .product-details {
+            width: 60%;
+        }
+        .product-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .product-info {
+            margin-bottom: 10px;
+        }
+        .product-info span {
+            display: block;
+            color: #555;
+        }
+        .price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #007600;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+        .rating {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .compare {
+            display: flex;
+            align-items: center;
+        }
+        .compare input {
+            margin-right: 5px;
+        }
+        .exchange {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-container">
+        <!-- Product 1 -->
+        <div class="product">
+            <img src="acer-laptop.jpg" alt="Acer Laptop">
+            <div class="product-details">
+                <div class="product-title">Acer Aspire 7 Intel Core i5 13th Gen</div>
+                <div class="product-info">
+                    <span>16 GB DDR4 RAM</span>
+                    <span>Windows 11 Operating System</span>
+                    <span>512 GB SSD</span>
+                    <span>15.6 Inch Display</span>
+                    <span>6 GB NVIDIA Graphics</span>
+                </div>
+                <div>
+                    <span class="rating">4.3 ★</span> 223 Ratings & 10 Reviews
+                </div>
+                
+            </div>
+            <div class="price-details">
+                <div class="price">₹57,990</div>
+                <div class="old-price">₹89,999</div>
+                <div>35% off</div>
+                <div class="exchange">Up to ₹30,000 Off on Exchange</div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product">
+            <img src="hp-laptop.jpg" alt="HP Laptop">
+            <div class="product-details">
+                <div class="product-title">HP Victus Intel Core i5 12th Gen</div>
+                <div class="product-info">
+                    <span>16 GB DDR4 RAM</span>
+                    <span>Windows 11 Operating System</span>
+                    <span>512 GB SSD</span>
+                    <span>15.6 Inch Display</span>
+                    <span>4 GB NVIDIA Graphics</span>
+                </div>
+                <div>
+                    <span class="rating">4.4 ★</span> 1,726 Ratings & 78 Reviews
+                </div>
+
+            </div>
+            <div class="price-details">
+                <div class="price">₹58,990</div>
+                <div class="old-price">₹76,354</div>
+                <div>22% off</div>
+                <div class="exchange">Up to ₹28,000 Off on Exchange</div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product">
+            <img src="lenovo-laptop.jpg" alt="Lenovo Laptop">
+            <div class="product-details">
+                <div class="product-title">Lenovo IdeaPad Slim 5 Intel Core i7</div>
+                <div class="product-info">
+                    <span>16 GB DDR4 RAM</span>
+                    <span>Windows 11 Operating System</span>
+                    <span>512 GB SSD</span>
+                    <span>14 Inch Display</span>
+                    <span>Intel Iris Xe Graphics</span>
+                </div>
+                <div>
+                    <span class="rating">4.5 ★</span> 342 Ratings & 15 Reviews
+                </div>
+                
+            </div>
+            <div class="price-details">
+                <div class="price">₹64,990</div>
+                <div class="old-price">₹84,999</div>
+                <div>24% off</div>
+                <div class="exchange">Up to ₹20,000 Off on Exchange</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

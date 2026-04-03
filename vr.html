@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Products Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        .product {
+            background-color: white;
+            width: 30%;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .description {
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 1.3em;
+            color: #e53935;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .discount {
+            color: #388e3c;
+            font-size: 0.9em;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .rating span {
+            background-color: #4caf50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .reviews {
+            color: #555;
+            font-size: 0.9em;
+        }
+        .availability {
+            color: #d32f2f;
+            margin-top: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Product 1 -->
+    <div class="product">
+        <img src="vr-headset-1.jpg" alt="IRUSU Monster 3D VR Headset">
+        <div class="title">IRUSU Monster 3D VR Headset with Remote Controller</div>
+        <div class="description">Smart Glasses, Black</div>
+        <div class="rating">
+            <span>3.5 ★</span>
+            <div class="reviews">(1,540)</div>
+        </div>
+        <div class="price">₹2,070
+            <span class="old-price">₹3,599</span>
+        </div>
+        <div class="discount">42% off</div>
+        <div class="availability">Only few left</div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+        <img src="vr-headset-2.jpg" alt="Manni Mann VR Box">
+        <div class="title">Manni Mann VR Box</div>
+        <div class="description">Smart Glasses, Black & White</div>
+        <div class="rating">
+            <span>Assured</span>
+        </div>
+        <div class="price">₹878
+            <span class="old-price">₹2,496</span>
+        </div>
+        <div class="discount">64% off</div>
+        <div class="availability">Only few left</div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product">
+        <img src="vr-headset-3.jpg" alt="IRUSU VR Ultra VR Box">
+        <div class="title">IRUSU VR Ultra VR Box with Remote for Mobiles</div>
+        <div class="description">Smart Glasses, Dark Black</div>
+        <div class="rating">
+            <span>3.5 ★</span>
+            <div class="reviews">(13)</div>
+        </div>
+        <div class="price">₹2,999
+            <span class="old-price">₹3,993</span>
+        </div>
+        <div class="discount">25% off</div>
+        <div class="availability">Only few left</div>
+    </div>
+</div>
+
+</body>
+</html>

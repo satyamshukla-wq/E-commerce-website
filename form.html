@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signin-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .signin-container h2 {
+            margin-bottom: 20px;
+        }
+        .signin-container input[type="text"],
+        .signin-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .signin-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .signin-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signin-container">
+        <h2>Sign In</h2>
+        <form id="loginForm">
+            <label for="email">Email or Username</label>
+            <input type="text" id="email" name="email" placeholder="Enter email or username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+            <input type="submit" value="Sign In">
+        </form>
+
+        <div class="message" id="successMessage">
+            Login successfully created!
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simulate a successful login
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email && password) {
+                // Display success message
+                document.getElementById("successMessage").style.display = "block";
+
+                // You can clear the form or perform other actions here
+                document.getElementById("loginForm").reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
