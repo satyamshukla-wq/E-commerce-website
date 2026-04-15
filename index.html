@@ -20,7 +20,12 @@
         </div>
         <div class="main-header">
             <h2 class="logo">S.s<span> computers</span></h2>
-            <nav class="main-nav">
+            <button class="hamburger-menu" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav" id="navMenu">
                 <ul>
                     <li><a href="">Home</a></li>
                     <li><a href="">Shop</a></li>
@@ -258,5 +263,24 @@
             </div>
         </section>
     
+    <script>
+        // Hamburger Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburgerBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
