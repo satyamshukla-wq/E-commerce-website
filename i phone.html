@@ -14,12 +14,14 @@
 
         .product-card {
             background-color: #fff;
-            width: 1000px;
+            width: 100%;
+            max-width: 1000px;
             margin: 20px auto;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
             display: flex;
             padding: 20px;
+            box-sizing: border-box;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -27,6 +29,7 @@
             width: 250px;
             height: auto;
             margin-right: 20px;
+            flex-shrink: 0;
         }
 
         .product-details {
@@ -75,6 +78,72 @@
             text-decoration: none;
             color: #0071c2;
             font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .product-image {
+                width: 100%;
+                max-width: 300px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .product-price {
+                text-align: left;
+                margin-top: 10px;
+            }
+
+            .product-details h2 {
+                font-size: 16px;
+            }
+
+            .product-details ul li {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .product-card {
+                margin: 15px 0;
+                padding: 12px;
+            }
+
+            .product-image {
+                max-width: 200px;
+                margin-bottom: 12px;
+            }
+
+            .product-details h2 {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .product-details .rating {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .product-details ul li {
+                font-size: 12px;
+                margin-bottom: 4px;
+            }
+
+            .product-price {
+                font-size: 16px;
+            }
+
+            .product-price .unavailable {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
