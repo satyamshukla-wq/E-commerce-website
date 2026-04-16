@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPhone Comparison</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         .product-card {
@@ -84,6 +90,7 @@
             .product-card {
                 flex-direction: column;
                 padding: 15px;
+                align-items: center;
             }
 
             .product-image {
@@ -91,10 +98,22 @@
                 max-width: 300px;
                 margin-right: 0;
                 margin-bottom: 15px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .product-image img {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .product-details {
+                width: 100%;
+                text-align: center;
             }
 
             .product-price {
-                text-align: left;
+                text-align: center;
                 margin-top: 10px;
             }
 
@@ -109,17 +128,34 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 0;
+                margin: 0;
             }
 
             .product-card {
-                margin: 15px 0;
+                margin: 15px auto;
                 padding: 12px;
+                width: 100%;
+                border-radius: 5px;
+                align-items: center;
             }
 
             .product-image {
-                max-width: 200px;
+                max-width: 100%;
+                width: 100%;
                 margin-bottom: 12px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .product-image img {
+                width: 100%;
+                max-width: 220px;
+            }
+
+            .product-details {
+                width: 100%;
+                text-align: center;
             }
 
             .product-details h2 {
@@ -132,6 +168,10 @@
                 margin-bottom: 8px;
             }
 
+            .product-details ul {
+                margin: 0;
+            }
+
             .product-details ul li {
                 font-size: 12px;
                 margin-bottom: 4px;
@@ -139,6 +179,8 @@
 
             .product-price {
                 font-size: 16px;
+                text-align: center;
+                margin-top: 10px;
             }
 
             .product-price .unavailable {
