@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV Comparison</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
             margin: 0;
             padding: 0;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         .product-card {
             background-color: white;
-            width: 1400px;
+            width: 100%;
+            max-width: 1400px;
             margin: 20px auto;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
@@ -27,6 +34,7 @@
             width: 300px;
             height: auto;
             margin-right: 20px;
+            flex-shrink: 0;
         }
 
         .product-details {
@@ -79,6 +87,117 @@
             text-decoration: none;
             color: #0071c2;
             font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                flex-direction: column;
+                padding: 15px;
+                align-items: center;
+            }
+
+            .product-image {
+                width: 100%;
+                max-width: 350px;
+                margin-right: 0;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .product-image img {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .product-details {
+                width: 100%;
+                text-align: center;
+            }
+
+            .product-details h2 {
+                font-size: 16px;
+            }
+
+            .product-details ul li {
+                font-size: 13px;
+            }
+
+            .product-price {
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .product-card {
+                margin: 15px auto;
+                padding: 12px;
+                width: 100%;
+                border-radius: 5px;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .product-image {
+                max-width: 100%;
+                width: 100%;
+                margin-bottom: 12px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .product-image img {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .product-details {
+                width: 100%;
+                text-align: center;
+            }
+
+            .product-details h2 {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .product-details .rating {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .product-details ul {
+                margin: 0;
+            }
+
+            .product-details ul li {
+                font-size: 12px;
+                margin-bottom: 4px;
+            }
+
+            .product-price {
+                font-size: 16px;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .product-price p {
+                margin: 3px 0;
+            }
+
+            .product-price .discount {
+                font-size: 12px;
+            }
+
+            .product-price a {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
