@@ -1,272 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone Comparison</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone Product Listing</title>
     <style>
         * {
             box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
             margin: 0;
-            padding: 0;
+            background: #f3f3f3;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+        }
+
+        .duo-hero {
+            background: #efefef;
+            text-align: center;
+            padding: 18px 0 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .duo-kicker {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .duo-title {
+            margin: 0;
+            font-size: clamp(56px, 8vw, 172px);
+            line-height: 0.95;
+            letter-spacing: -0.08em;
+            font-weight: 700;
+            color: #101010;
+        }
+
+        .duo-subtitle {
+            margin: 18px 0 0;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #3d3d3d;
+            font-weight: 500;
+        }
+
+        .duo-device-wrap {
             width: 100%;
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            padding-top: 18px;
+        }
+
+        .duo-device {
+            position: relative;
+            width: min(980px, 80vw);
+            height: 630px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 24px 25px rgba(0, 0, 0, 0.18));
+        }
+
+        .duo-screen {
+            position: relative;
+            width: 48%;
+            height: 78%;
+            background: #e8f3fa;
+            border: 10px solid #1b1b1d;
+            border-radius: 36px 36px 24px 24px;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25);
+        }
+
+        .left-screen {
+            transform: translateX(22px) rotate(-1.3deg);
+            border-right: 7px solid #1b1b1d;
+            background: linear-gradient(135deg, #a6d7d9 0%, #bee9f7 30%, #9dd2e6 100%);
+        }
+
+        .right-screen {
+            transform: translateX(-22px) rotate(1.3deg);
+            border-left: 7px solid #1b1b1d;
+            background: linear-gradient(180deg, #cfe9f7 0%, #a6d4ef 30%, #98c5ee 100%);
+        }
+
+        .duo-hinge {
+            position: absolute;
+            width: 92px;
+            height: 88%;
+            border-radius: 26px;
+            background: linear-gradient(180deg, #1b1b1d 8%, #2c2d2f 30%, #111214 100%);
+            box-shadow: inset 0 0 0 2px rgba(255,255,255,0.06);
+            z-index: 2;
+        }
+
+        .portrait-photo {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: saturate(1.05) brightness(1.02);
+        }
+
+        .day-pill {
+            position: absolute;
+            left: 26px;
+            bottom: 26px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px 10px 10px;
+            background: rgba(15, 15, 15, 0.48);
+            border-radius: 999px;
+            backdrop-filter: blur(2px);
+            color: #fff;
+        }
+
+        .play-btn {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.38);
+        }
+
+        .day-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.15;
+        }
+
+        .day-copy strong {
+            font-size: 18px;
+        }
+
+        .day-copy small {
+            font-size: 10px;
+            opacity: 0.8;
+            letter-spacing: 0.08em;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 18px 8px;
+            font-size: 13px;
+            color: #1d1d1d;
+            font-weight: 600;
+        }
+
+        .mini-icons {
+            font-size: 18px;
+        }
+
+        .weather-card {
+            margin: 18px auto 0;
+            width: 72%;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 18px;
+            padding: 14px 16px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+            color: #112332;
+        }
+
+        .weather-header,
+        .weather-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .weather-header {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .weather-header span:last-child {
+            font-size: 28px;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .weather-meta {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(42px, 1fr));
+            gap: 12px;
+            width: 74%;
+            margin: 18px auto 0;
+        }
+
+        .app {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.18);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        }
+
+        .a1 { background: linear-gradient(135deg, #62d5f5, #359ee8); }
+        .a2 { background: linear-gradient(135deg, #76d1a6, #2d9a72); }
+        .a3 { background: linear-gradient(135deg, #f5d56b, #ef8a47); }
+        .a4 { background: linear-gradient(135deg, #f7b4b7, #d057a7); }
+        .a5 { background: linear-gradient(135deg, #f8d76a, #f0a948); }
+        .a6 { background: linear-gradient(135deg, #9ad1ff, #577dc7); }
+        .a7 { background: linear-gradient(135deg, #b7d88b, #79ad42); }
+        .a8 { background: linear-gradient(135deg, #d6d9dd, #9fa8b4); }
+        .a9 { background: linear-gradient(135deg, #8f8ae9, #4d5dd0); }
+        .a10 { background: linear-gradient(135deg, #f1d8c4, #d49669); }
+        .a11 { background: linear-gradient(135deg, #f4b1c9, #db5d97); }
+        .a12 { background: linear-gradient(135deg, #a6d8ff, #5d7de0); }
+
+        .page {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px 0 40px;
         }
 
         .product-card {
-            background-color: #fff;
-            width: 100%;
-            max-width: 1000px;
-            margin: 20px auto;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
             display: flex;
-            padding: 20px;
-            box-sizing: border-box;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            align-items: flex-start;
+            gap: 28px;
+            background: #fafafa;
+            border: 1px solid #dfe1e5;
+            border-radius: 14px;
+            padding: 20px 18px 18px 18px;
+            margin: 0 auto 20px;
+            width: 100%;
+            max-width: 1180px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
         }
 
-        .product-image {
-            width: 250px;
-            height: auto;
-            margin-right: 20px;
-            flex-shrink: 0;
+        .product-visual {
+            width: 338px;
+            min-width: 338px;
+            height: 356px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .product-details {
-            flex-grow: 1;
+        .phone-shot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.02);
+            filter: saturate(0.95) contrast(1.04);
         }
 
-        .product-details h2 {
+        .product-info {
+            flex: 1;
+            min-width: 0;
+            padding-top: 2px;
+        }
+
+        .sponsored-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6b6d74;
+            font-size: 12px;
+            margin: 2px 0 10px 0;
+        }
+
+        .sponsored-row .info-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #4a4a4a;
+            font-size: 12px;
+            border: 1px solid #d2d2d2;
+            font-weight: bold;
+        }
+
+        .product-title {
+            margin: 0 0 10px;
+            font-size: 24px;
+            line-height: 1.35;
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .product-desc {
+            margin: 0 0 8px;
+            color: #23262c;
+            font-size: 15px;
+            line-height: 1.5;
+            max-width: 700px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+            color: #3d3d3d;
+            font-size: 14px;
+        }
+
+        .stars {
+            color: #ff8a00;
+            letter-spacing: 1px;
             font-size: 18px;
-            color: #0071c2;
-            margin-bottom: 10px;
         }
 
-        .product-details .rating {
+        .rating-value {
+            font-size: 16px;
+            color: #1d1d1f;
+        }
+
+        .rating-count {
+            color: #1a73bb;
             font-size: 14px;
-            color: #4CAF50;
-            margin-bottom: 10px;
         }
 
-        .product-details ul {
-            list-style-type: none;
-            padding: 0;
+        .price-box {
+            margin-top: 10px;
+            margin-bottom: 12px;
         }
 
-        .product-details ul li {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .product-price {
-            text-align: right;
+        .currency {
             font-size: 18px;
-            color: #333;
+            font-weight: 700;
+            vertical-align: top;
+            margin-right: 2px;
         }
 
-        .product-price p {
-            margin: 5px 0;
+        .price {
+            font-size: 25px;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #111;
         }
 
-        .product-price .unavailable {
+        .offer {
+            display: block;
+            margin: 8px 0 6px;
+            color: #2d2d2d;
             font-size: 14px;
-            color: #ff5252;
         }
 
-        .product-price a {
+        .offer strong {
+            color: #111;
+        }
+
+        .delivery {
+            margin: 10px 0 18px;
+            color: #292b30;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .delivery strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .delivery .day {
+            color: #111;
+            font-weight: 700;
+        }
+
+        .cta-wrap {
+            margin-top: 12px;
+        }
+
+        .add-to-cart {
+            display: inline-block;
+            min-width: 220px;
+            padding: 18px 24px;
+            border: 0;
+            border-radius: 12px;
+            background: #f5d742;
+            color: #111;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: none;
+            transition: 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            background: #f0cc2b;
+        }
+
+        .color-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            padding-left: 2px;
+        }
+
+        .color-swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.25);
+            background: #111;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+        }
+
+        .color-swatch.light {
+            background: #c9c9c9;
+        }
+
+        .color-swatch.gray {
+            background: #8a8a8a;
+        }
+
+        .color-swatch.steel {
+            background: #d9d9d9;
+        }
+
+        .color-swatch.burgundy {
+            background: #6a1d2a;
+        }
+
+        .more-colors {
+            color: #2d6be0;
+            font-size: 12px;
             text-decoration: none;
-            color: #0071c2;
-            font-size: 14px;
         }
 
-        @media (max-width: 768px) {
+        .product-card[data-color="burgundy"] .product-title,
+        .product-card[data-color="burgundy"] .rating-count,
+        .product-card[data-color="burgundy"] .delivery .day {
+            color: #191919;
+        }
+
+        @media (max-width: 980px) {
             .product-card {
                 flex-direction: column;
-                padding: 15px;
-                align-items: center;
+                gap: 18px;
             }
 
-            .product-image {
+            .product-visual {
                 width: 100%;
-                max-width: 300px;
-                margin-right: 0;
-                margin-bottom: 15px;
-                display: flex;
-                justify-content: center;
+                min-width: 100%;
+                max-width: 440px;
+                height: 420px;
+                margin: 0 auto;
             }
 
-            .product-image img {
+            .product-info {
                 width: 100%;
-                max-width: 250px;
-            }
-
-            .product-details {
-                width: 100%;
-                text-align: center;
-            }
-
-            .product-price {
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .product-details h2 {
-                font-size: 16px;
-            }
-
-            .product-details ul li {
-                font-size: 13px;
             }
         }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 0;
-                margin: 0;
+        @media (max-width: 580px) {
+            .page {
+                padding: 10px 10px 24px;
             }
 
             .product-card {
-                margin: 15px auto;
-                padding: 12px;
-                width: 100%;
-                border-radius: 5px;
-                align-items: center;
+                padding: 14px 12px 16px;
+                border-radius: 10px;
             }
 
-            .product-image {
-                max-width: 100%;
-                width: 100%;
-                margin-bottom: 12px;
-                display: flex;
-                justify-content: center;
+            .product-title {
+                font-size: 21px;
             }
 
-            .product-image img {
-                width: 100%;
-                max-width: 220px;
-            }
-
-            .product-details {
-                width: 100%;
-                text-align: center;
-            }
-
-            .product-details h2 {
+            .product-desc {
                 font-size: 14px;
-                margin-bottom: 8px;
             }
 
-            .product-details .rating {
-                font-size: 12px;
-                margin-bottom: 8px;
+            .price {
+                font-size: 24px;
             }
 
-            .product-details ul {
-                margin: 0;
-            }
-
-            .product-details ul li {
-                font-size: 12px;
-                margin-bottom: 4px;
-            }
-
-            .product-price {
-                font-size: 16px;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .product-price .unavailable {
-                font-size: 12px;
+            .add-to-cart {
+                width: 100%;
+                min-width: 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Product 1 -->
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80" alt="Apple iPhone 18" class="product-image">
-        <div class="product-details">
-            <h2>Apple iPhone 18 (128 GB)</h2>
-            <p class="rating">⭐⭐⭐⭐⭐ 4.8 <span>(3,200 Ratings & 420 Reviews)</span></p>
-            <ul>
-                <li>128 GB ROM</li>
-                <li>6.1 inch Super Retina XDR Display</li>
-                <li>48MP Rear Camera + 12MP Front Camera</li>
-                <li>A18 Chip with 6 Core CPU</li>
-                <li>1 Year Warranty for Phone and 6 Months for Accessories</li>
-            </ul>
-        </div>
-        <div class="product-price">
-            <p class="unavailable">New Launch</p>
-            <p>₹79,900</p>
+    <div class="duo-hero">
+        <div class="duo-kicker">iPhone Duo</div>
+        <h1 class="duo-title">Hello, hello.</h1>
+        <p class="duo-subtitle">Pre-order starting 5:00 a.m. PT on 10.16<br />Available starting 10.23</p>
+
+        <div class="duo-device-wrap">
+            <div class="duo-device">
+                <div class="duo-screen left-screen">
+                    <div class="portrait-photo"></div>
+                    <div class="day-pill">
+                        <span class="play-btn">▶</span>
+                        <div class="day-copy">
+                            <strong>On This Day</strong>
+                            <small>APRIL 1, 2025</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duo-hinge"></div>
+
+                <div class="duo-screen right-screen">
+                    <div class="status-row">
+                        <span>9:41</span>
+                        <span class="mini-icons">◔</span>
+                    </div>
+
+                    <div class="weather-card">
+                        <div class="weather-header">
+                            <span>San Francisco</span>
+                            <span>54°</span>
+                        </div>
+                        <div class="weather-meta">
+                            <span>Partly Cloudy</span>
+                            <span>H:57° L:49°</span>
+                        </div>
+                    </div>
+
+                    <div class="app-grid">
+                        <div class="app a1">📷</div>
+                        <div class="app a2">💬</div>
+                        <div class="app a3">🎵</div>
+                        <div class="app a4">📧</div>
+                        <div class="app a5">☀️</div>
+                        <div class="app a6">🧭</div>
+                        <div class="app a7">📺</div>
+                        <div class="app a8">🧪</div>
+                        <div class="app a9">🗂️</div>
+                        <div class="app a10">🛰️</div>
+                        <div class="app a11">📲</div>
+                        <div class="app a12">🎮</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Product 2 -->
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Apple iPhone 18 Plus" class="product-image">
-        <div class="product-details">
-            <h2>Apple iPhone 18 Plus (256 GB)</h2>
-            <p class="rating">⭐⭐⭐⭐⭐ 4.9 <span>(2,680 Ratings & 360 Reviews)</span></p>
-            <ul>
-                <li>256 GB ROM</li>
-                <li>6.7 inch OLED Display</li>
-                <li>Dual Camera System with 48MP Main Lens</li>
-                <li>Advanced A18 Chip and Longer Battery Life</li>
-                <li>1 Year Warranty for Phone and 6 Months for Accessories</li>
-            </ul>
-        </div>
-        <div class="product-price">
-            <p class="unavailable">In Stock</p>
-            <p>₹89,900</p>
-        </div>
-    </div>
+    <div class="page">
+        <div class="product-card" data-color="silver">
+            <div class="product-visual">
+                <img class="phone-shot" src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80" alt="iPhone 18 Pro silver" />
+            </div>
 
-    <!-- Product 3 -->
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=80" alt="Apple iPhone 18 Pro" class="product-image">
-        <div class="product-details">
-            <h2>Apple Smart Watch Pro (256 GB)</h2>
-            <p class="rating">⭐⭐⭐⭐⭐ 5.0 <span>(4,100 Ratings & 510 Reviews)</span></p>
-            <ul>
-                <li>256 GB ROM</li>
-                <li>6.5 inch ProMotion Display</li>
-                <li>48MP Pro Camera System with Telephoto Lens</li>
-                <li>A18 Pro Chip, Titanium Build</li>
-                <li>1 Year Warranty for Phone and 6 Months for Accessories</li>
-            </ul>
-        </div>
-        <div class="product-price">
-            <p class="unavailable">Hot Deal Grab Fast</p>
-            <p>₹1,09,900</p>
-        </div>
-    </div>
+            <div class="product-info">
+                <div class="sponsored-row">
+                    <span>Sponsored</span>
+                    <span class="info-icon">i</span>
+                </div>
 
-    <!-- Product 4 -->
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=700&q=80" alt="Apple iPhone 18 Pro Max" class="product-image">
-        <div class="product-details">
-            <h2>Apple iPhone 18 Pro Max (512 GB)</h2>
-            <p class="rating">⭐⭐⭐⭐⭐ 5.0 <span>(5,300 Ratings & 760 Reviews)</span></p>
-            <ul>
-                <li>512 GB ROM</li>
-                <li>6.8 inch Ultra Retina Pro Display</li>
-                <li>48MP Pro Camera + LiDAR + AI Imaging</li>
-                <li>A18 Pro Max with Advanced Gaming Performance</li>
-                <li>1 Year Warranty for Phone and 6 Months for Accessories</li>
-            </ul>
+                <h2 class="product-title">iPhone 18 Pro (256 GB) - Silver</h2>
+                <p class="product-desc">15.93 cm (6.3") Super Retina XDR Display with ProMotion, A20 Pro Chip, 48MP Fusion Main Camera with Variable...</p>
+
+                <div class="rating-row">
+                    <span class="rating-value">3.2</span>
+                    <span class="stars">★ ★ ★ ☆ ☆</span>
+                    <span class="rating-count">(17)</span>
+                </div>
+
+                <div class="price-box">
+                    <span class="currency">₹</span><span class="price">1,64,900</span>
+                </div>
+
+                <div class="offer">Up to 5% back with Amazon Pay ICI...</div>
+
+                <div class="delivery">
+                    <strong>FREE delivery</strong> <span class="day">Sat, 3 Oct</span><br />
+                    Or fastest delivery <span class="day">Tomorrow, 2 Oct</span>
+                </div>
+
+                <div class="cta-wrap">
+                    <button class="add-to-cart">Add to cart</button>
+                </div>
+
+                <div class="color-row">
+                    <span class="color-swatch light" title="Silver"></span>
+                    <span class="color-swatch burgundy" title="Burgundy"></span>
+                    <span class="color-swatch gray" title="Gray"></span>
+                    <span class="color-swatch steel" title="Steel"></span>
+                    <a href="#" class="more-colors">+3 other colors/patterns</a>
+                </div>
+            </div>
         </div>
-        <div class="product-price">
-            <p class="unavailable">Recently Launched</p>
-            <p>₹1,39,900</p>
+
+        <div class="product-card" data-color="burgundy">
+            <div class="product-visual">
+                <img class="phone-shot" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80" alt="iPhone 18 Pro burgundy" />
+            </div>
+
+            <div class="product-info">
+                <div class="sponsored-row">
+                    <span>Sponsored</span>
+                    <span class="info-icon">i</span>
+                </div>
+
+                <h2 class="product-title">iPhone 18 Pro (256 GB) - Burgundy</h2>
+                <p class="product-desc">15.93 cm (6.3") Super Retina XDR Display with ProMotion, A20 Pro Chip, 48MP Fusion Main Camera with Variable...</p>
+
+                <div class="rating-row">
+                    <span class="rating-value">3.2</span>
+                    <span class="stars">★ ★ ★ ☆ ☆</span>
+                    <span class="rating-count">(17)</span>
+                </div>
+
+                <div class="price-box">
+                    <span class="currency">₹</span><span class="price">1,64,900</span>
+                </div>
+
+                <div class="offer">Up to 5% back with Amazon Pay ICI...</div>
+
+                <div class="delivery">
+                    <strong>FREE delivery</strong> <span class="day">Mon, 5 Oct</span><br />
+                    Or fastest delivery <span class="day">Sun, 4 Oct</span>
+                </div>
+
+                <div class="cta-wrap">
+                    <button class="add-to-cart">Add to cart</button>
+                </div>
+
+                <div class="color-row">
+                    <span class="color-swatch burgundy" title="Burgundy"></span>
+                    <span class="color-swatch steel" title="Steel"></span>
+                    <span class="color-swatch gray" title="Gray"></span>
+                    <span class="color-swatch light" title="Silver"></span>
+                </div>
+            </div>
         </div>
     </div>
 </body>
